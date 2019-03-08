@@ -56,9 +56,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    @NeedPermission(value = {Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.CAMERA})
-    public void needChooseImage(){
+    @NeedPermission(value = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA})
+    public void needChooseImage() {
         chooseImage();
     }
 
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 .showSingleMediaType(true)
                 //这两行要连用 是否在选择图片中展示照相 和适配安卓7.0 FileProvider
                 .capture(true)
-                .captureStrategy(new CaptureStrategy(true,"peng.qtgm.demo_list.ImageFlieProvider"))
+                .captureStrategy(new CaptureStrategy(true, "peng.qtgm.demo_list.ImageFlieProvider"))
                 //有序选择图片 123456...
                 .countable(true)
                 //最大选择数量为9
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 //界面中缩略图的质量
                 .thumbnailScale(0.8f)
                 //蓝色主题
-                .theme(R.style.Matisse_Zhihu)
+                .theme(R.style.matisse_ui)
                 //Glide加载方式
                 .imageEngine(new GlideEngine())
                 //请求码
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             List<Uri> uris = Matisse.obtainResult(data);
             ivShow.setImageURI(uris.get(0));
             performCrop(uris.get(0));
-        }else if(requestCode == 10002 && resultCode == RESULT_OK){
+        } else if (requestCode == 10002 && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap selectedBitmap = extras.getParcelable("data");
             //判断返回值extras是否为空，为空则说明用户截图没有保存就返回了，此时应该用上一张图，
@@ -127,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
     private void performCrop(Uri uri) {
         try {
             Intent intent = new Intent("com.android.camera.action.CROP");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 grantUriPermission("com.android.camera", uri,
                         Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -134,9 +135,15 @@ public class MainActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             }
             intent.setDataAndType(uri, "image/*");
-            intent.putExtra("crop", "true");
-            intent.putExtra("aspectX", 1);
-            intent.putExtra("aspectY", 1);
+            //intent.putExtra("crop", "true");
+            //适配华为手机默认圆形
+            if (Build.MANUFACTURER.equals("HUAWEI")) {
+                intent.putExtra("aspectX", 9998);
+                intent.putExtra("aspectY", 9999);
+            } else {
+                intent.putExtra("aspectX", 1);
+                intent.putExtra("aspectY", 1);
+            }
             intent.putExtra("outputX", 300);
             intent.putExtra("outputY", 300);
             intent.putExtra("return-data", true);
@@ -164,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
         mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
         return mediaFile;
     }
-
 
 
 }
