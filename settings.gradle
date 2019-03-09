@@ -1,1 +1,1 @@
-include ':app', ':test_xg_0308'
+include ':test_picture_0309', ':test_xg_0308'
