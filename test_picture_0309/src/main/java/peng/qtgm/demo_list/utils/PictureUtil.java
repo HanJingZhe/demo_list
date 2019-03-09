@@ -2,15 +2,12 @@ package peng.qtgm.demo_list.utils;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
@@ -18,16 +15,18 @@ import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import peng.qtgm.demo_list.R;
 
 /**
  * @author peng_wang
  * @date 2019/3/9
- * description:调用图片选择和裁剪功能  需要传入Activity
+ * @DES: 调用图片选择和裁剪功能,需要传入Activity
  */
 public class PictureUtil {
-
 
     /**
      * 调用知乎UI选择图片
@@ -81,8 +80,6 @@ public class PictureUtil {
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             }
-            intent.setDataAndType(uri, "image/*");
-            intent.putExtra("crop", "true");
             //适配华为手机默认圆形
             if (Build.MANUFACTURER.equals("HUAWEI")) {
                 intent.putExtra("aspectX", 9998);
@@ -91,10 +88,12 @@ public class PictureUtil {
                 intent.putExtra("aspectX", 1);
                 intent.putExtra("aspectY", 1);
             }
+            intent.setDataAndType(uri, "image/*");
+            intent.putExtra("crop", "true");
             intent.putExtra("outputX", 300);
             intent.putExtra("outputY", 300);
             intent.putExtra("return-data", true);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, getOutputMediaFile(activity).toString());
+            //intent.putExtra(MediaStore.EXTRA_OUTPUT, getOutputMediaFile(activity).toString());
             activity.startActivityForResult(intent, requestCode);
         } catch (ActivityNotFoundException anfe) {
             Log.d("图片裁剪","你的设备不支持裁剪行为!");
@@ -116,6 +115,20 @@ public class PictureUtil {
         mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
         return mediaFile;
     }
+
+    private File create(Activity activity){
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File imageFile = null;
+        try {
+            imageFile = File.createTempFile(imageFileName, ".jpg", storageDir);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imageFile;
+    }
+
 
 
 
