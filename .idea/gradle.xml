@@ -8,8 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/test_picture_0309" />
-            <option value="$PROJECT_DIR$/test_xg_0308" />
+            <option value="$PROJECT_DIR$/test0306_picture" />
+            <option value="$PROJECT_DIR$/test0308_xg" />
+            <option value="$PROJECT_DIR$/test0309_videoplayer" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
