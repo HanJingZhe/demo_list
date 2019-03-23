@@ -57,7 +57,5 @@ dependencies {
     //七牛 短视频 压缩用
     implementation files('libs/pldroid-shortvideo-1.16.2.jar')
 
-    //git
-    implementation 'com.iceteck.silicompressorr:silicompressor:2.2.1'
 
 }

@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 
 import com.zhihu.matisse.Matisse;
@@ -34,7 +35,7 @@ public class PictureUtil {
     public static void openPictures(Activity activity, int requestCode,int selectNum) {
         Matisse.from(activity)
                 //选择视频和图片
-                .choose(MimeType.ofVideo())
+                .choose(MimeType.ofAll())
                 //是否只显示选择的类型的缩略图，就不会把所有图片视频都放在一起，而是需要什么展示什么
                 .showSingleMediaType(true)
                 //这两行要连用 是否在选择图片中展示照相 和适配安卓7.0 FileProvider
@@ -60,8 +61,8 @@ public class PictureUtil {
      * 调用系统UI选择图片
      */
     public static void openAlbum(Activity activity, int requestCode) {
-        Intent intent = new Intent("android.intent.action.GET_CONTENT"); //文件管理界面的图库
-        //Intent intent = new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent("android.intent.action.GET_CONTENT"); //文件管理UI
+        //Intent intent = new Intent(Intent.ACTION_PICK); //系统相册UI
         intent.setType("MUSIC/*");
         activity.startActivityForResult(intent, requestCode);//打开系统相册
     }
@@ -92,8 +93,8 @@ public class PictureUtil {
             intent.putExtra("crop", "true");
             intent.putExtra("outputX", 300);
             intent.putExtra("outputY", 300);
-            intent.putExtra("return-data", true);
-            //intent.putExtra(MediaStore.EXTRA_OUTPUT, getOutputMediaFile(activity).toString());
+            intent.putExtra("return-data", false);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, getOutputMediaFile(activity).toString());
             activity.startActivityForResult(intent, requestCode);
         } catch (ActivityNotFoundException anfe) {
             Log.d("图片裁剪","你的设备不支持裁剪行为!");

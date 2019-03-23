@@ -1,1 +1,1 @@
-include ':test0306_picture', ':test0308_xg', ':test0309_videoplayer'
+include ':t0306_picture', ':t0308_xg', ':t0309_video_compress'
