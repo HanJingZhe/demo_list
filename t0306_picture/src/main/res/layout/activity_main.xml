@@ -15,13 +15,22 @@
     <ImageView
         android:background="#ff0"
         android:id="@+id/iv_show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="335dp"
+        android:layout_height="180dp"
         android:layout_marginTop="32dp"
         android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_choose" />
+
+    <Button
+        android:text="del"
+        app:layout_constraintTop_toBottomOf="@id/iv_show"
+        android:layout_marginTop="20dp"
+        android:onClick="deleteImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </android.support.constraint.ConstraintLayout>
