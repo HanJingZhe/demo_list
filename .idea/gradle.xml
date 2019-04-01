@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/t0306_picture" />
             <option value="$PROJECT_DIR$/t0308_xg" />
             <option value="$PROJECT_DIR$/t0309_video_compress" />
+            <option value="$PROJECT_DIR$/t0330_recycler" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

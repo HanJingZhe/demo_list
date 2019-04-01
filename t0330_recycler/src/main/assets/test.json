@@ -1,0 +1,101 @@
+[{
+"house":"小白",
+"memberList":[
+        {
+          
+            "type":"你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg",
+          "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg",
+           "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fwyf0wr8hhj30ie0nhq6p.jpg",
+            "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fwgzx8n1syj30sg15h7ew.jpg",
+            "used":true,
+            "who":"lijinshanmx"
+        }
+    ]
+},
+{
+"house":"小黑",
+"memberList":[
+        {
+          
+            "type":"你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg",
+          "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg",
+           "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fwyf0wr8hhj30ie0nhq6p.jpg",
+            "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fwgzx8n1syj30sg15h7ew.jpg",
+            "used":true,
+            "who":"lijinshanmx"
+        }
+    ]
+},
+{
+"house":"小红",
+"memberList":[
+        {
+          
+            "type":"你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg",
+          "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fxd7vcz86nj30qo0ybqc1.jpg",
+           "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fwyf0wr8hhj30ie0nhq6p.jpg",
+            "used":true,
+            "who":"lijinshanmx"
+        },
+        {
+           
+            "type":"你好你好你好你好",
+            "url":"https://ws1.sinaimg.cn/large/0065oQSqgy1fwgzx8n1syj30sg15h7ew.jpg",
+            "used":true,
+            "who":"lijinshanmx"
+        }
+    ]
+}
+
+]

@@ -30,7 +30,7 @@ import peng.qtgm.demo_list.R;
  */
 public class PictureUtil {
 
-    private static final String MyQLWDirectory = Environment.getExternalStorageDirectory() + File.separator + "qulianwu";
+    private static final String MyQLWDirectory = Environment.getExternalStorageDirectory() + File.separator + "test_file";
 
     public static String getMyPetRootDirectory() {
         return MyQLWDirectory;
@@ -44,7 +44,7 @@ public class PictureUtil {
             File MyPetRoot = new File(getMyPetRootDirectory());
             if (MyPetRoot.exists()) {
                 b = true;
-            }else{
+            } else {
                 Log.d("王鹏", "mkdirMyPetRootDirectory: 开始创建");
                 b = MyPetRoot.mkdir();
             }
@@ -94,8 +94,8 @@ public class PictureUtil {
      * 调用系统UI进行裁剪(方形裁剪)
      */
     public static void cropImage(Activity activity, Uri uri, int requestCode) {
-        if(!mkdirMyPetRootDirectory()){
-            Log.d("王鹏","创建文件夹失败!");
+        if (!mkdirMyPetRootDirectory()) {
+            Log.d("王鹏", "创建文件夹失败!");
             return;
         }
         File cropFile = new File(MyQLWDirectory, "crop.jpg");

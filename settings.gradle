@@ -1,1 +1,1 @@
-include ':t0306_picture', ':t0308_xg', ':t0309_video_compress'
+include ':t0306_picture', ':t0308_xg', ':t0309_video_compress', ':t0330_recycler'
