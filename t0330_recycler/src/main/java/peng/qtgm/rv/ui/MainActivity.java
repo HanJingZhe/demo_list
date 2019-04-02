@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         initGroupData();
         mainRv = findViewById(R.id.main_rv);
-        mainRv.setLayoutManager(new LinearLayoutManager(this));
+        mainRv.setLayoutManager(new GridLayoutManager(this,4));
         adapter = new GroupAdapter(initGroupData());
         mainRv.setAdapter(adapter);
 
@@ -81,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 allList.add(new AllShowBean(list.get(i).getMemberList().get(j)));
             }
         }
-
         return allList;
     }
 
