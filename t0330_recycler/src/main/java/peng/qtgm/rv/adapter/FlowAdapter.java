@@ -16,11 +16,11 @@ import peng.qtgm.rv.R;
 public class FlowAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
     public FlowAdapter(@Nullable List<String> data) {
-        super(R.layout.adapter_flow, data);
+        super(R.layout.adapter_body_layout, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, String item) {
-        helper.setText(R.id.flow_name, item);
+        //helper.setText(R.id.flow_name, item);
     }
 }

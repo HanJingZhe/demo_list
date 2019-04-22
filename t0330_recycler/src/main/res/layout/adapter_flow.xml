@@ -9,4 +9,4 @@
     android:background="@drawable/shape_tv"
     android:gravity="center"
     android:text="你好"
-    android:textColor="#000" />
+    android:textColor="#fff" />
