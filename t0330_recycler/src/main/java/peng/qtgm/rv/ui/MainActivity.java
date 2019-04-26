@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initGroupData();
+        /**
+         * 一个rv实现分组列表  缺点 header只能放一个 String
+         */
         mainRv = findViewById(R.id.main_rv);
         mainRv.setLayoutManager(new GridLayoutManager(this,4));
         adapter = new GroupAdapter(initGroupData());

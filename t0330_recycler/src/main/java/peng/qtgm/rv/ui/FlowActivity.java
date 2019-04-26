@@ -1,7 +1,9 @@
-package peng.qtgm.rv.adapter;
+package peng.qtgm.rv.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
@@ -10,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import peng.qtgm.rv.R;
+import peng.qtgm.rv.adapter.FlowAdapter;
 import peng.qtgm.rv.utils.FlowLayoutManager;
 import peng.qtgm.rv.utils.FlowLayoutManager2;
 import peng.qtgm.rv.utils.OverLayCardLayoutManager;
@@ -24,11 +27,11 @@ public class FlowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flow);
         flowRv = findViewById(R.id.flow_rv);
-        //flowRv.setLayoutManager(new LinearLayoutManager(this,OrientationHel2per.HORIZONTAL,false));
-        flowRv.setLayoutManager(new FlowLayoutManager2());
-        //flowRv.setLayoutManager(new OverLayCardLayoutManager());
-        FlowAdapter adapter = new FlowAdapter(initData());
-        flowRv.setAdapter(adapter);
+        flowRv.setLayoutManager(new LinearLayoutManager(this));
+        //flowRv.setLayoutManager(new FlowLayoutManager()); //流布局
+        //flowRv.setLayoutManager(new FlowLayoutManager2());//流布局
+        flowRv.setLayoutManager(new OverLayCardLayoutManager()); //卡片 无效
+        flowRv.setAdapter(new FlowAdapter(initData()));
 
 
 

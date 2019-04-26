@@ -1,7 +1,5 @@
 package peng.qtgm.rv.bean;
 
-import com.chad.library.adapter.base.entity.SectionEntity;
-
 import java.util.List;
 
 /**
