@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="input_dialog" parent="@android:style/Theme.Dialog">
+
+    </style>
+
 </resources>
