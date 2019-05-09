@@ -3,6 +3,8 @@ package peng.qtgm.t0426_agora.app;
 import android.app.Application;
 import android.content.Context;
 
+import peng.qtgm.t0426_agora.utils.AgoraManager;
+
 /**
  * @author peng_wang
  * @date 2019/4/26
@@ -16,6 +18,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
+        AgoraManager.getInstance().init(this);
     }
 
     public static Context getmContext() {

@@ -1,6 +1,7 @@
 package peng.qtgm.t0426_agora.utils;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceView;
 
@@ -9,6 +10,9 @@ import io.agora.rtc.IRtcEngineEventHandler;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtc.video.VideoCanvas;
 import io.agora.rtc.video.VideoEncoderConfiguration;
+import peng.qtgm.t0426_agora.R;
+
+import static peng.qtgm.t0426_agora.app.MyApplication.WP;
 
 /**
  * @author peng_wang
@@ -19,7 +23,6 @@ public class AgoraManager {
     private static AgoraManager mAgoraManage;
     private SparseArray<SurfaceView> mSurfaceViews;
     private RtcEngine mRtcEngine;
-    private Context mContext;
     private int uid = 0;
 
     /*
@@ -54,7 +57,7 @@ public class AgoraManager {
          */
         @Override
         public void onFirstRemoteVideoDecoded(int uid, int width, int height, int elapsed) {
-
+            if(mOnPartyListener != null) mOnPartyListener.onGetRemoteVideo(uid);
         }
 
         /**
@@ -62,7 +65,7 @@ public class AgoraManager {
          */
         @Override
         public void onJoinChannelSuccess(String channel, int uid, int elapsed) {
-            super.onJoinChannelSuccess(channel, uid, elapsed);
+            if(mOnPartyListener != null) mOnPartyListener.onJoinChannelSuccess(channel,uid);
         }
 
         /**
@@ -70,7 +73,7 @@ public class AgoraManager {
          */
         @Override
         public void onLeaveChannel(RtcStats stats) {
-            super.onLeaveChannel(stats);
+            if(mOnPartyListener != null) mOnPartyListener.onLeaveChannelSuccess();
         }
 
         /**
@@ -78,25 +81,48 @@ public class AgoraManager {
          */
         @Override
         public void onUserOffline(int uid, int reason) {
-            super.onUserOffline(uid, reason);
+            if(mOnPartyListener != null) mOnPartyListener.onUserOffline(uid);
         }
     };
 
     /*
      * 初始化
      */
-    public void init(Context context, String appId) {
-        mContext = context;
+    public void init(Context context) {
         try {
-            mRtcEngine = RtcEngine.create(mContext, appId, mIRtcEngineEventHandler);
+            mRtcEngine = RtcEngine.create(context, context.getString(R.string.agora_app_id), mIRtcEngineEventHandler);
             //开启视频功能
             mRtcEngine.enableVideo();
             //视频配置，设置为360P
             mRtcEngine.setVideoProfile(Constants.VIDEO_PROFILE_360P, false);
-            mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);//设置为直播模式
+            //mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);//设置为直播模式
+            mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_COMMUNICATION);//设置为通信模式默认
+            setVideoEncoderConfiguration();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    /*
+     * 设置本地视频，即前置摄像头预览
+     */
+    public AgoraManager setupLocalVideo(Context context) {
+        SurfaceView surfaceView = RtcEngine.CreateRendererView(context);
+        mSurfaceViews.put(uid, surfaceView);
+        mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_HIDDEN, uid));
+        return this;//返回AgoraManager以作链式调用
+    }
+
+    /*
+     * setupRemoteVideo
+     * 设置远程视频
+     */
+    public AgoraManager setupRemoteVideo(int uid,Context context){
+        SurfaceView surfaceView = RtcEngine.CreateRendererView(context);
+        mSurfaceViews.put(uid, surfaceView);
+        mRtcEngine.setupRemoteVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_ADAPTIVE, uid));
+        return this;
     }
 
     /*
@@ -107,6 +133,21 @@ public class AgoraManager {
         mRtcEngine.joinChannel(null, channel, null, 0);
         return this;
     }
+
+    /*
+     * 开启预览
+     */
+    public void startPreview() {
+        mRtcEngine.startPreview();
+    }
+
+    /*
+     * 停止预览
+     */
+    public void stopPreview() {
+        mRtcEngine.stopPreview();
+    }
+
 
     /*
      * 退出当前频道
@@ -136,44 +177,8 @@ public class AgoraManager {
         return this;
     }
 
-    /*
-     * 设置本地视频，即前置摄像头预览
-     */
-    public AgoraManager setupLocalVideo() {
-        //surfaceView.setZOrderMediaOverlay(true);
-        //创建一个SurfaceView用作视频预览
-        SurfaceView surfaceView = RtcEngine.CreateRendererView(mContext);
-        //将SurfaceView保存起来在SparseArray中，后续会将其加入界面。key为视频的用户id，这里是本地视频, 默认id是0
-        mSurfaceViews.put(uid, surfaceView);
-        //设置本地视频，渲染模式选择VideoCanvas.RENDER_MODE_HIDDEN，如果选其他模式会出现视频不会填充满整个SurfaceView的情况，
-        //具体渲染模式参考官方文档https://docs.agora.io/cn/user_guide/API/android_api.html#set-local-video-view-setuplocalvideo
-        mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_HIDDEN, uid));
-        return this;//返回AgoraManager以作链式调用
-    }
-
-    /*
-     * setupRemoteVideo
-     * 设置远程视频
-     */
-    public AgoraManager setupRemoteVideo(int uid){
-        SurfaceView surfaceView = RtcEngine.CreateRendererView(mContext);
-        mSurfaceViews.put(uid, surfaceView);
-        mRtcEngine.setupRemoteVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_ADAPTIVE, uid));
-        return this;
-    }
-
-    /*
-     * 开启预览
-     */
-    public void startPreview() {
-        mRtcEngine.startPreview();
-    }
-
-    /*
-     * 停止预览
-     */
-    public void stopPreview() {
-        mRtcEngine.stopPreview();
+    public SurfaceView getSurfaceView(int uid) {
+        return mSurfaceViews.get(uid);
     }
 
     /*
@@ -182,5 +187,19 @@ public class AgoraManager {
     public SurfaceView getLocalSurfaceView() {
         return mSurfaceViews.get(uid);
     }
+
+    private OnPartyListener mOnPartyListener;
+
+    public interface OnPartyListener {
+        void onJoinChannelSuccess(String channel, int uid);
+        void onGetRemoteVideo(int uid);
+        void onLeaveChannelSuccess();
+        void onUserOffline(int uid);
+    }
+
+    public void setmOnPartyListener(OnPartyListener listener) {
+        mOnPartyListener = listener;
+    }
+
 
 }

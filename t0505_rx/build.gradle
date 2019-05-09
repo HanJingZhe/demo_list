@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'walle'
 
 android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "peng.qtgm.t0424_lambda"
-        minSdkVersion 24
+        applicationId "peng.qtgm.rx"
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -15,10 +15,34 @@ android {
 
     }
 
+    signingConfigs {
+        debug {
+            storeFile file("t0505_rx.jks")
+            storePassword "123321"
+            keyAlias "testrx"
+            keyPassword "123321"
+            v2SigningEnabled true
+        }
+        release {
+            storeFile file("t0505_rx.jks")
+            storePassword "123321"
+            keyAlias "testrx"
+            keyPassword "123321"
+            v2SigningEnabled true
+        }
+    }
+
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release //签名
+
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -27,12 +51,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
@@ -40,13 +62,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-    //java8
-    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:+'
     //rx
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
@@ -61,4 +82,13 @@ dependencies {
     implementation 'com.xhb:xbanner:1.5.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-16'
     implementation 'com.android.support:cardview-v7:28.0.0'
+}
+
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+    // 渠道配置文件
+    channelFile = new File("${project.getProjectDir()}/channel")
 }
