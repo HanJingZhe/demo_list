@@ -9,8 +9,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.5'
-        classpath 'com.meituan.android.walle:plugin:1.1.6'
-        classpath 'me.tatarka:gradle-retrolambda:3.7.1'
+        classpath 'com.meituan.android.walle:plugin:1.1.6'//美团打包
+        classpath 'me.tatarka:gradle-retrolambda:3.7.1'//lambda
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1' //调试利器  给方法加上 @duBuglog 可以在log日志中打印出方法运行时间
     }
 }
 

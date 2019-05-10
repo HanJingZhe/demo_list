@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import peng.qtgm.t0426_agora.R;
@@ -14,7 +15,8 @@ import peng.qtgm.t0426_agora.utils.OnDialogClickListener;
 
 public class RoomActivity extends AppCompatActivity {
 
-    public static final String CHANNELNAME = "channelName";
+    public static final String CHANNELNAME = "channelName"; //房间名
+    public static final String CHANNELSTATE = "channelstate";//加入进来的身份
 
     private FrameLayout flPreview;
     private FrameLayout flMe;

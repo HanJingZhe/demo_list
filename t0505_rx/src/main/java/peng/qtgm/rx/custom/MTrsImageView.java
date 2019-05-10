@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 
-@SuppressLint("AppCompatCustomView")
+/**
+ * 图片可以拖拽 拉伸
+ */
 public class MTrsImageView extends ImageView {
 
     public MTrsImageView(Context context) {
