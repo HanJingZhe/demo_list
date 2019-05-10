@@ -66,22 +66,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new DialogInputUtil.InputBuilder(getContext())
                 .setTitle(state == 1 ? "开启直播" : "加入直播")
                 .setDes(state == 1 ? "请输入您要开启的直播房号" : "请输入您要加入的直播房号")
-                .setmClickListener(new OnDialogClickListener() {
-                    @Override
-                    public void onCommitClick(String etContent) {
-                        Intent intent = new Intent(getContext(), RoomActivity.class);
-                        intent.putExtra(CHANNELNAME, etContent);
-                        intent.putExtra(CHANNELSTATE, state);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onCancalClick(View v) {
-
-                    }
+                .setmClickListener(etContent -> {
+                    Intent intent = new Intent(getContext(), RoomActivity.class);
+                    intent.putExtra(CHANNELNAME, etContent);
+                    intent.putExtra(CHANNELSTATE, state);
+                    startActivity(intent);
                 }).show();
     }
-
 
 
 }

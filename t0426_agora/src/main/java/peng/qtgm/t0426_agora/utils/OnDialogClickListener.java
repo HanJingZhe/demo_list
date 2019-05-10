@@ -8,5 +8,5 @@ import android.view.View;
  */
 public interface OnDialogClickListener {
     void onCommitClick(String etContent);
-    void onCancalClick(View v);
+    //void onCancalClick(View v);
 }

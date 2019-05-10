@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import peng.qtgm.t0426_agora.R;
@@ -21,8 +20,9 @@ public class RoomActivity extends AppCompatActivity {
     private FrameLayout flPreview;
     private FrameLayout flMe;
 
-    private String channelName = "common";
-    private int uid = 0;
+    private String channelName = "common"; //直播间name
+    private int channelState = -1;  // 主播/观众
+    private int uid = 0; //用户uid
 
     private DialogInputUtil.InputBuilder inputBuilder;
 
@@ -35,8 +35,8 @@ public class RoomActivity extends AppCompatActivity {
         flMe = findViewById(R.id.room_fl_me);//自己视角
 
         channelName = getIntent().getStringExtra(CHANNELNAME); //进入频道name
-        AgoraManager.getInstance().joinChannel(channelName).setmOnPartyListener(onPartyListener);//加入频道
-        showInputDialog(); //提示用户输入本次直播的id
+        channelState = getIntent().getIntExtra(CHANNELSTATE,-1); //进入频道state 角色
+        showInputDialog(); //提示用户输入本次直播的uid
     }
 
     //show dialog
@@ -47,6 +47,20 @@ public class RoomActivity extends AppCompatActivity {
                 .setmClickListener(mClickListener);
         inputBuilder.show();
     }
+
+    //dialog click
+    private OnDialogClickListener mClickListener = new OnDialogClickListener() {
+        @Override
+        public void onCommitClick(String etContent) {
+            try {
+                uid = Integer.parseInt(etContent);
+                AgoraManager.getInstance().setRole(channelState);//设置角色 主播/观众
+            } catch (NumberFormatException e) {
+                Toast.makeText(getContext(), "用户名类型输入有误", Toast.LENGTH_LONG).show();
+                inputBuilder.show();
+            }
+        }
+    };
 
     //room   listener
     AgoraManager.OnPartyListener onPartyListener = new AgoraManager.OnPartyListener() {
@@ -76,24 +90,6 @@ public class RoomActivity extends AppCompatActivity {
         @Override
         public void onUserOffline(int uid) {
 
-        }
-    };
-
-    //dialog click
-    private OnDialogClickListener mClickListener = new OnDialogClickListener() {
-        @Override
-        public void onCommitClick(String etContent) {
-            try {
-                uid = Integer.parseInt(etContent);
-                AgoraManager.getInstance().setRole(uid);
-            } catch (NumberFormatException e) {
-                Toast.makeText(getContext(), "用户名类型输入有误", Toast.LENGTH_LONG).show();
-                inputBuilder.show();
-            }
-        }
-
-        @Override
-        public void onCancalClick(View v) {
         }
     };
 

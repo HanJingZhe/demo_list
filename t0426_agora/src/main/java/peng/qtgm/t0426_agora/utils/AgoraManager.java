@@ -95,8 +95,8 @@ public class AgoraManager {
             mRtcEngine.enableVideo();
             //视频配置，设置为360P
             mRtcEngine.setVideoProfile(Constants.VIDEO_PROFILE_360P, false);
-            //mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);//设置为直播模式
-            mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_COMMUNICATION);//设置为通信模式默认
+            mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);//设置为直播模式
+            //mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_COMMUNICATION);//设置为通信模式--默认
             setVideoEncoderConfiguration();
         } catch (Exception e) {
             e.printStackTrace();
@@ -156,7 +156,7 @@ public class AgoraManager {
         mRtcEngine.leaveChannel();
     }
 
-    /**
+    /*
      * 设置角色 主播/观众
      * role: 1/主播  2/观众
      */

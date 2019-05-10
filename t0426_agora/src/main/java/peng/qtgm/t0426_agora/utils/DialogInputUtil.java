@@ -72,7 +72,7 @@ public class DialogInputUtil extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.dialog_btn_cancal:
-                if (builder.mClickListener != null) builder.mClickListener.onCancalClick(v);
+                //if (builder.mClickListener != null) builder.mClickListener.onCancalClick(v);
                 break;
             case R.id.dialog_btn_commit:
                 if (builder.mClickListener != null) {
