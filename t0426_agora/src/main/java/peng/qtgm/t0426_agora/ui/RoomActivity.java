@@ -48,7 +48,7 @@ public class RoomActivity extends AppCompatActivity {
         inputBuilder.show();
     }
 
-    //room  listener
+    //room   listener
     AgoraManager.OnPartyListener onPartyListener = new AgoraManager.OnPartyListener() {
         @Override
         public void onJoinChannelSuccess(String channel, int uid) {//加入成功
