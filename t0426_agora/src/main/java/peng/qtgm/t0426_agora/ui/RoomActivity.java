@@ -112,7 +112,7 @@ public class RoomActivity extends AppCompatActivity {
         flPreview.addView(AgoraManager.getInstance().getLocalSurfaceView());
     }
 
-    //stop  preview
+    //stop   preview
     @Override
     protected void onPause() {
         super.onPause();
