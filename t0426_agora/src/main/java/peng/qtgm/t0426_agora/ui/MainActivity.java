@@ -13,7 +13,6 @@ import com.ninetripods.aopermission.permissionlib.annotation.NeedPermission;
 import butterknife.ButterKnife;
 import peng.qtgm.t0426_agora.R;
 import peng.qtgm.t0426_agora.utils.DialogInputUtil;
-import peng.qtgm.t0426_agora.utils.OnDialogClickListener;
 
 import static peng.qtgm.t0426_agora.ui.RoomActivity.CHANNELNAME;
 import static peng.qtgm.t0426_agora.ui.RoomActivity.CHANNELSTATE;

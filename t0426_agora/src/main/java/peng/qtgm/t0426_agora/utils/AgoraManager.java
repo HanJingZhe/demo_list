@@ -2,14 +2,10 @@ package peng.qtgm.t0426_agora.utils;
 
 import android.content.Context;
 import android.util.Log;
-import android.util.SparseArray;
-import android.view.SurfaceView;
 
 import io.agora.rtc.Constants;
 import io.agora.rtc.IRtcEngineEventHandler;
 import io.agora.rtc.RtcEngine;
-import io.agora.rtc.video.VideoCanvas;
-import io.agora.rtc.video.VideoEncoderConfiguration;
 import peng.qtgm.t0426_agora.R;
 
 import static peng.qtgm.t0426_agora.app.MyApplication.WP;
@@ -20,186 +16,97 @@ import static peng.qtgm.t0426_agora.app.MyApplication.WP;
  */
 public class AgoraManager {
 
-    private static AgoraManager mAgoraManage;
-    private SparseArray<SurfaceView> mSurfaceViews;
+
+    private static AgoraManager instance = null;
     private RtcEngine mRtcEngine;
     private int uid = 0;
 
     /*
-     * 构造
+     * 构造函数
      */
-    public AgoraManager() {
-        mSurfaceViews = new SparseArray<>();
+    private AgoraManager() {
+        if (instance == null) {
+            synchronized (AgoraManager.class) {
+                if (instance == null) {
+                    instance = new AgoraManager();
+                }
+            }
+        }
     }
 
     /*
      * 获取实例
      */
     public static AgoraManager getInstance() {
-        if (mAgoraManage == null) {
-            synchronized (AgoraManager.class) {
-                if (mAgoraManage == null) {
-                    mAgoraManage = new AgoraManager();
-                }
-            }
-        }
-        return mAgoraManage;
+        return instance;
     }
 
 
     /*
-     * agora 的回调接口
+     * 初始化SDK
      */
-    private IRtcEngineEventHandler mIRtcEngineEventHandler = new IRtcEngineEventHandler() {
-
-        /**
-         * 当获取用户uid的远程视频的回调
-         */
-        @Override
-        public void onFirstRemoteVideoDecoded(int uid, int width, int height, int elapsed) {
-            if(mOnPartyListener != null) mOnPartyListener.onGetRemoteVideo(uid);
-        }
-
-        /**
-         * 加入频道成功的回调
-         */
-        @Override
-        public void onJoinChannelSuccess(String channel, int uid, int elapsed) {
-            if(mOnPartyListener != null) mOnPartyListener.onJoinChannelSuccess(channel,uid);
-        }
-
-        /**
-         * 退出频道
-         */
-        @Override
-        public void onLeaveChannel(RtcStats stats) {
-            if(mOnPartyListener != null) mOnPartyListener.onLeaveChannelSuccess();
-        }
-
-        /**
-         * 用户uid离线时的回调
-         */
-        @Override
-        public void onUserOffline(int uid, int reason) {
-            if(mOnPartyListener != null) mOnPartyListener.onUserOffline(uid);
-        }
-    };
-
-    /*
-     * 初始化
-     */
-    public void init(Context context) {
+    public void initEngine(Context context,int uid) {
+        this.uid = uid;
         try {
-            mRtcEngine = RtcEngine.create(context, context.getString(R.string.agora_app_id), mIRtcEngineEventHandler);
-            //开启视频功能
-            mRtcEngine.enableVideo();
-            //视频配置，设置为360P
-            mRtcEngine.setVideoProfile(Constants.VIDEO_PROFILE_360P, false);
-            mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);//设置为直播模式
-            //mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_COMMUNICATION);//设置为通信模式--默认
-            setVideoEncoderConfiguration();
+            mRtcEngine = RtcEngine.create(context, context.getString(R.string.agora_app_id), mRtcEventHandler);
+            //同一频道只能设置一种频道模式。如果需要切换频道模式，请先调用 destroy 方法销毁后重新创建一个 Engine 实例
+            mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);//设置频道模式
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(WP, Log.getStackTraceString(e));
+            throw new RuntimeException("NEED TO check rtc sdk init fatal error\n" + Log.getStackTraceString(e));
         }
-    }
-
-
-    /*
-     * 设置本地视频，即前置摄像头预览
-     */
-    public AgoraManager setupLocalVideo(Context context) {
-        SurfaceView surfaceView = RtcEngine.CreateRendererView(context);
-        mSurfaceViews.put(uid, surfaceView);
-        mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_HIDDEN, uid));
-        return this;//返回AgoraManager以作链式调用
-    }
-
-    /*
-     * setupRemoteVideo
-     * 设置远程视频
-     */
-    public AgoraManager setupRemoteVideo(int uid,Context context){
-        SurfaceView surfaceView = RtcEngine.CreateRendererView(context);
-        mSurfaceViews.put(uid, surfaceView);
-        mRtcEngine.setupRemoteVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_ADAPTIVE, uid));
-        return this;
     }
 
     /*
      * 加入频道
-     * channel : 频道ID 相同即一个频道
+     * 如果已在频道中，用户必须调用 leaveChannel 方法退出当前频道，才能进入下一个频道。
+     * 传入能标识频道的频道 ID。输入相同频道 ID 的用户会进入同一个频道。
+     * 频道内每个用户的 UID 必须是唯一的。如果将 UID 设为 0，系统将自动分配一个 UID。
      */
-    public AgoraManager joinChannel(String channel) {
-        mRtcEngine.joinChannel(null, channel, null, 0);
+    public AgoraManager joinChannel(String channelName){
+        mRtcEngine.joinChannel(null,channelName,null,uid);
         return this;
     }
 
-    /*
-     * 开启预览
+    /**
+     * 设置角色
      */
-    public void startPreview() {
-        mRtcEngine.startPreview();
-    }
-
-    /*
-     * 停止预览
-     */
-    public void stopPreview() {
-        mRtcEngine.stopPreview();
-    }
-
-
-    /*
-     * 退出当前频道
-     */
-    public void leaveChannel() {
-        mRtcEngine.leaveChannel();
-    }
-
-    /*
-     * 设置角色 主播/观众
-     * role: 1/主播  2/观众
-     */
-    public AgoraManager setRole(int role) {
-        mRtcEngine.setClientRole(role == 1 ? Constants.CLIENT_ROLE_BROADCASTER : Constants.CLIENT_ROLE_AUDIENCE); //主播
+    public AgoraManager setClientRole(){
+        mRtcEngine.setClientRole(Constants.CLIENT_ROLE_BROADCASTER);//主播
+        //mRtcEngine.setClientRole(Constants.CLIENT_ROLE_AUDIENCE);//观众
         return this;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
-     * 设置视频的编码属性
+     * 声网SDK的回调
      */
-    public AgoraManager setVideoEncoderConfiguration() {
-        mRtcEngine.setVideoEncoderConfiguration(
-                new VideoEncoderConfiguration(
-                        new VideoEncoderConfiguration.VideoDimensions(360, 640),
-                        VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_15, VideoEncoderConfiguration.STANDARD_BITRATE,
-                        VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_PORTRAIT));
-        return this;
-    }
+    private IRtcEngineEventHandler mRtcEventHandler = new IRtcEngineEventHandler() {
+        @Override
+        public void onJoinChannelSuccess(String channel, int uid, int elapsed) {
+            super.onJoinChannelSuccess(channel, uid, elapsed);
+        }
 
-    public SurfaceView getSurfaceView(int uid) {
-        return mSurfaceViews.get(uid);
-    }
-
-    /*
-     * 返回本地预览
-     */
-    public SurfaceView getLocalSurfaceView() {
-        return mSurfaceViews.get(uid);
-    }
-
-    private OnPartyListener mOnPartyListener;
-
-    public interface OnPartyListener {
-        void onJoinChannelSuccess(String channel, int uid);
-        void onGetRemoteVideo(int uid);
-        void onLeaveChannelSuccess();
-        void onUserOffline(int uid);
-    }
-
-    public void setmOnPartyListener(OnPartyListener listener) {
-        mOnPartyListener = listener;
-    }
-
+        @Override
+        public void onLeaveChannel(RtcStats stats) {
+            super.onLeaveChannel(stats);
+        }
+    };
 
 }

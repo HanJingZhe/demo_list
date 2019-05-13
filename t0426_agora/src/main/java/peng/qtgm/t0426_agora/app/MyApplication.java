@@ -18,7 +18,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
-        AgoraManager.getInstance().init(this);
     }
 
     public static Context getmContext() {

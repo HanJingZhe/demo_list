@@ -4,8 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -15,8 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import peng.qtgm.t0426_agora.R;
-
-import static peng.qtgm.t0426_agora.app.MyApplication.WP;
 
 
 /**
