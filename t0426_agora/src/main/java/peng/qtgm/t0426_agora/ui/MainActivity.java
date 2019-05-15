@@ -7,23 +7,28 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.ninetripods.aopermission.permissionlib.annotation.NeedPermission;
 
 import butterknife.ButterKnife;
 import peng.qtgm.t0426_agora.R;
+import peng.qtgm.t0426_agora.utils.AgoraManager;
 import peng.qtgm.t0426_agora.utils.DialogInputUtil;
 
 import static peng.qtgm.t0426_agora.ui.RoomActivity.CHANNELNAME;
 import static peng.qtgm.t0426_agora.ui.RoomActivity.CHANNELSTATE;
+import static peng.qtgm.t0426_agora.ui.RoomActivity.USERID;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    public static final int ANCHOR = 1;
+    public static final int AUDIENCE = 2;
 
     private Button btnOpen;
     private Button btnJoin;
 
-    private static final int ANCHOR = 1;
-    private static final int AUDIENCE = 2;
+    private int uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnJoin = findViewById(R.id.main_btn_join);
         btnOpen.setOnClickListener(this);
         btnJoin.setOnClickListener(this);
+
+        showInputDialog();
     }
 
     @NeedPermission(value = {Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, requestCode = 100)
@@ -69,8 +76,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Intent intent = new Intent(getContext(), RoomActivity.class);
                     intent.putExtra(CHANNELNAME, etContent);
                     intent.putExtra(CHANNELSTATE, state);
+                    intent.putExtra(USERID,uid);
                     startActivity(intent);
                 }).show();
+    }
+
+    //show dialog
+    private void showInputDialog() {
+        new DialogInputUtil.InputBuilder(this)
+                .setTitle("进入直播")
+                .setmClickListener(etContent -> inputUid(etContent))
+                .setDes("请输入你的用户名(数字int类型)")
+                .show();
+    }
+
+    //dialog click
+    private void inputUid(String etContent) {
+        try {
+            uid = Integer.parseInt(etContent);
+            //initAgoraSDK
+            AgoraManager.getInstance().initEngine(getContext(),uid);
+        } catch (NumberFormatException e) {
+            Toast.makeText(getContext(), "用户名类型输入有误", Toast.LENGTH_LONG).show();
+            showInputDialog();
+        }
     }
 
 
