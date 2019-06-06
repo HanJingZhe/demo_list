@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:minHeight="720dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/main_btn_1"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="创建操作符" />
+            android:gravity="center"
+            android:text="@string/rxZip_text"
+            android:textColor="#000"
+            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/main_btn_2"
+            android:id="@+id/zip_btn_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="转换操作符" />
+            android:text="map() 操作符" />
+
+        <Button
+            android:id="@+id/zip_btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="flatMap() 操作符" />
+
+        <Button
+            android:id="@+id/zip_btn_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="concatMap() 操作符" />
 
 
         <Button
-            android:id="@+id/main_btn_3"
+            android:id="@+id/zip_btn_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="合并操作符" />
+            android:text="buffer()操作符" />
 
         <Button
-            android:id="@+id/main_btn_4"
+            android:id="@+id/zip_btn_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="转换操作符" />
+            android:text="groupBy()操作符" />
 
-        <Button
-            android:id="@+id/main_btn_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="转换操作符" />
-
-        <Button
-            android:id="@+id/main_btn_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="转换操作符" />
 
     </LinearLayout>
 

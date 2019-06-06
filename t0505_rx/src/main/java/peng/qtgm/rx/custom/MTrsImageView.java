@@ -1,6 +1,5 @@
 package peng.qtgm.rx.custom;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
@@ -34,31 +33,6 @@ public class MTrsImageView extends ImageView {
         Matrix matrix = new Matrix();
         setScaleType(ScaleType.MATRIX);
         setImageMatrix(matrix);
-
-        /*Observable<Event> mTouchStream = Observable.create(new ObservableOnSubscribe<Event>() {
-            @Override
-            public void subscribe(ObservableEmitter<Event> emitter) throws Exception {
-                setOnTouchListener(new OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        int pointerCount = event.getPointerCount();
-                        if (pointerCount == 1) {
-                            Event e = new Event();
-                            e.action = event.getActionMasked();
-                            e.p1 = new Vector(event.getX(), event.getY());
-                            emitter.onNext(e);
-                        } else if (pointerCount == 2) {
-                            Event e = new Event();
-                            e.action = event.getActionMasked();
-                            e.p1 = new Vector(event.getX(0), event.getY(0));
-                            e.p2 = new Vector(event.getX(1), event.getY(1));
-                            emitter.onNext(e);
-                        }
-                        return true;
-                    }
-                });
-            }
-        }).share();*/
 
         Observable<Event> touchStream = Observable.create((ObservableEmitter<Event> emitter) -> {
             setOnTouchListener((v, event) -> {

@@ -15,4 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <peng.qtgm.rx.custom.MTrsImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="center"
+        android:src="@mipmap/naruto3" />
+
 </LinearLayout>

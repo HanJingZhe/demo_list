@@ -11,6 +11,9 @@ import butterknife.ButterKnife;
 import peng.qtgm.rx.BuildConfig;
 import peng.qtgm.rx.R;
 
+/**
+ * 测试拉伸的图片
+ */
 public class ImageVersionActivity extends AppCompatActivity {
 
     @BindView(R.id.img_tv_channel)

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff0">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="测试图片的各种缩放类型"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/main_iv_1"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00"
+            android:scaleType="center" />
+
+        <ImageView
+            android:id="@+id/main_iv_2"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00" />
+
+        <ImageView
+            android:id="@+id/main_iv_3"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00" />
+
+        <ImageView
+            android:id="@+id/main_iv_4"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00" />
+
+        <ImageView
+            android:id="@+id/main_iv_5"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00" />
+
+        <ImageView
+            android:id="@+id/main_iv_6"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00"
+            android:scaleType="centerInside" />
+
+        <ImageView
+            android:id="@+id/main_iv_7"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/main_iv_8"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/main_iv_9"
+            android:layout_width="335dp"
+            android:layout_height="188dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#f00"
+            android:scaleType="fitXY" />
+
+
+    </LinearLayout>
+
+</ScrollView>

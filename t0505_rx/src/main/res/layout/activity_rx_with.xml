@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/rxZip_text"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/with_btn_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="merge()，concat ()操作符" />
+
+        <Button
+            android:id="@+id/with_btn_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="concatDelayError()/mergeDelayError() 操作符" />
+
+        <Button
+            android:id="@+id/with_btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zip 操作符" />
+
+        <Button
+            android:id="@+id/with_btn_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="combineLatest 操作符" />
+
+        <Button
+            android:id="@+id/with_btn_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="reduce ()操作符" />
+
+        <Button
+            android:id="@+id/with_btn_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="collect() 操作符" />
+
+        <Button
+            android:id="@+id/with_btn_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="startWith()/startWithArray() 操作符" />
+
+        <Button
+            android:id="@+id/with_btn_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="count() 操作符" />
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">t0505_rx</string>
+
+    <!--RxCreateActivity start-->
+    <string name="rxCreate_text">创建操作符： create(), just()，fromArray(),fromIterable(),timer(),interval(),intervalRange(),range(),rangeLong(),nerver(),empty(),defer()等。</string>
+    <!--RxCreateActivity end-->
+
+    <!--RxZipActivity start-->
+    <string name="rxZip_text">转换操作符：将Observable发送的数据按照一定的规则做一些变换，然后再将变换的数据发射出去\n
+            map,flatMap，concatMap,switchMap,buffer,groupBy等。</string>
+    <!--RxZipActivity end-->
+
+    <!--RxWithActivity start-->
+    <string name="rxWith_text">合并操作符 : 组合多个被观察者(Observable)&amp;合并需要发送的事件。
+        包含：concatMap(),concat(), merge(),mergeArray(),concateArray(),reduce(),collect(),startWith(),zip(),count()。</string>
+    <!--RxWithActivity end-->
+
 </resources>
