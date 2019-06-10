@@ -16,9 +16,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.observables.GroupedObservable;
 import peng.qtgm.rx.R;
 
 import static peng.qtgm.rx.ui.MainActivity.WP;

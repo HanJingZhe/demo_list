@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this,RxWithActivity.class));
                 break;
             case R.id.main_btn_4:
-                startActivity(new Intent(this,RxCreateActivity.class));
+                startActivity(new Intent(this,FunctionActivity.class));
                 break;
             case R.id.main_btn_5:
                 startActivity(new Intent(this,RxCreateActivity.class));
