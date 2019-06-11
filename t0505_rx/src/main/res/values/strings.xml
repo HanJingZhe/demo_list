@@ -15,4 +15,10 @@
         包含：concatMap(),concat(), merge(),mergeArray(),concateArray(),reduce(),collect(),startWith(),zip(),count()。</string>
     <!--RxWithActivity end-->
 
+    <!--RxFilterActivity start-->
+    <string name="rxFilter_text">过滤操作符： 用于将Observable发送的数据进行过滤和选择。
+        让Observable返回我们所需要的数据。 过滤操作符有
+        \n buffer()，filter()，skip()，take()，skipLast()，takeLast()，throttleFirst()，distainctUntilChange()</string>
+    <!--RxFilterActivity end-->
+
 </resources>

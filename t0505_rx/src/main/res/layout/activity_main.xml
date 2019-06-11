@@ -33,19 +33,19 @@
             android:id="@+id/main_btn_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="转换操作符" />
+            android:text="功能操作符" />
 
         <Button
             android:id="@+id/main_btn_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="转换操作符" />
+            android:text="过滤操作符" />
 
         <Button
             android:id="@+id/main_btn_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="转换操作符" />
+            android:text="222" />
 
     </LinearLayout>
 

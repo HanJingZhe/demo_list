@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/rxFilter_text"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/filter_btn_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="filter()" />
+
+        <Button
+            android:id="@+id/filter_btn_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="distinct()" />
+
+        <Button
+            android:id="@+id/filter_btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="distinctUntilChanged()" />
+
+        <Button
+            android:id="@+id/filter_btn_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="skip()，skipLast()操作符" />
+
+        <Button
+            android:id="@+id/filter_btn_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" take() 操作符" />
+
+        <Button
+            android:id="@+id/filter_btn_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="takeLast() 操作符" />
+
+        <Button
+            android:id="@+id/filter_btn_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="elementAt() 操作符" />
+
+        <Button
+            android:id="@+id/filter_btn_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="elementAtOrError()操作符" />
+
+        <Button
+            android:id="@+id/filter_btn_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ignoreElements() 操作符" />
+
+        <Button
+            android:id="@+id/filter_btn_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ofType() 操作符" />
+
+        <Button
+            android:id="@+id/filter_btn_11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="throttleFirst()/throttleLast() 操作符" />
+
+        <Button
+            android:id="@+id/filter_btn_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sample()" />
+
+        <Button
+            android:id="@+id/filter_btn_13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="firstElement()/lastElement()" />
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

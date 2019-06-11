@@ -1,9 +1,7 @@
 package peng.qtgm.rx.ui;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
-import java.util.function.BiFunction;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,8 +18,6 @@ import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiConsumer;
-import io.reactivex.functions.Consumer;
 import peng.qtgm.rx.R;
 
 import static peng.qtgm.rx.ui.MainActivity.WP;
