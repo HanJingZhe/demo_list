@@ -1,1 +1,3 @@
-include ':t0306_picture', ':t0308_xg', ':t0309_video_compress', ':t0330_recycler', ':t0424_lambda', ':t0426_preview', ':t0426_agora', ':t0505_rx', ':t0531_screen'
+include ':t0306_picture', ':t0308_xg', ':t0309_video_compress', ':t0330_recycler',
+        ':t0424_lambda', ':t0426_preview', ':t0426_agora', ':t0505_rx',
+        ':t0531_screen', ':t0612_umeng'

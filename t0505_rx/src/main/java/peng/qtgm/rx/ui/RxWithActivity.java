@@ -90,7 +90,7 @@ public class RxWithActivity extends AppCompatActivity {
         Observable
                 .just(1, 2, 3, 4)
                 .count()
-                .subscribe(aLong -> Log.e(WP , "发送事件的数量 ： " + aLong));
+                .subscribe(aLong -> Log.e(WP, "发送事件的数量 ： " + aLong));
     }
 
     /**
