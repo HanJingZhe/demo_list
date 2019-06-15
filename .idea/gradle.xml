@@ -18,6 +18,8 @@
             <option value="$PROJECT_DIR$/t0505_rx" />
             <option value="$PROJECT_DIR$/t0531_screen" />
             <option value="$PROJECT_DIR$/t0612_umeng" />
+            <option value="$PROJECT_DIR$/t0614_widget" />
+            <option value="$PROJECT_DIR$/t0615_aliplay" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
