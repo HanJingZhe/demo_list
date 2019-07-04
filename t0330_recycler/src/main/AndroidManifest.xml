@@ -27,13 +27,15 @@
         <activity android:name=".ui.FlowActivity" />
         <!-- rv标题吸附 -->
         <activity android:name=".ui.TopTitleActivity" />
-        <!--首页-->
+        <!-- 首页 -->
         <activity android:name=".ui.IndexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.SrlActivity"></activity>
     </application>
 
 </manifest>
