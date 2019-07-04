@@ -88,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
         return allList;
     }
 
-
-
     /*private List<HomeBean> initData() {
         List<HomeBean> list = new ArrayList<>();
         for(int i = 0 ; i < 3 ; i++){
@@ -98,9 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 list.add(new HomeBean(new MemberBean("小白"+j,j)));
             }
         }
-
         return list;
     }*/
-
 
 }

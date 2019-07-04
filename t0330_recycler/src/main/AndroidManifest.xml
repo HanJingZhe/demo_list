@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="peng.qtgm.rv">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -10,24 +16,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <!-- 一个rv分组 -->
-        <activity android:name=".ui.MainActivity"></activity>
-
+        <activity android:name=".ui.MainActivity" />
         <!-- rv长按拖拽右滑删除 -->
-        <activity android:name=".ui.PullActivity"></activity>
-
+        <activity android:name=".ui.PullActivity" />
         <!-- rv实现流布局 -->
-        <activity android:name=".ui.FlowActivity">
-
-        </activity>
-
-        <!--rv标题吸附-->
-        <activity android:name=".ui.TopTitleActivity">
+        <activity android:name=".ui.FlowActivity" />
+        <!-- rv标题吸附 -->
+        <activity android:name=".ui.TopTitleActivity" />
+        <!--首页-->
+        <activity android:name=".ui.IndexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
