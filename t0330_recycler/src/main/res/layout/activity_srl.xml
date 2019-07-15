@@ -2,11 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/srl_srl"
+        android:layout_weight="1"
         android:layout_width="match_parent"
+        app:srlHeaderTranslationViewId="@id/srl_tv"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
@@ -15,5 +20,16 @@
             android:layout_height="match_parent" />
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <TextView
+        android:id="@+id/srl_tv"
+        android:layout_width="wrap_content"
+        android:text="888888888888"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

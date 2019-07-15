@@ -20,6 +20,8 @@
             <option value="$PROJECT_DIR$/t0612_umeng" />
             <option value="$PROJECT_DIR$/t0614_widget" />
             <option value="$PROJECT_DIR$/t0615_aliplay" />
+            <option value="$PROJECT_DIR$/t0713_soft" />
+            <option value="$PROJECT_DIR$/t0715_animation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
