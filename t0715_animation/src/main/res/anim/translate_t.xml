@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:fromXDelta="0"
+    android:fromYDelta="0"
+    android:repeatMode="reverse"
+    android:startOffset="0"
+    android:toXDelta="200"
+    android:toYDelta="200" />
+
+    <!-- 数值、百分数、百分数p，譬如50表示以当前View左上角坐标加50px为初始点、
+    50%表示以当前View的左上角加上当前View宽高的50%做为初始点、
+    50%p表示以当前View的左上角加上父控件宽高的50%做为初始点-->
+
+    <!--android:startOffset="1000" 延时播放动画-->
+
+    <!--android:repeatMode="restart"  重复类型有两个值，reverse表示倒序回放，restart表示从头播放-->
