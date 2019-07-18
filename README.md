@@ -11,4 +11,4 @@ t0612_umeng: 练习umeng相关的api
 t0614_widget: 自定义控件
 t0615_aliplay: 支付相关
 t0713_soft: 关于控制软键盘弹出位置和方式
-t0715_animation: android的动画练习
+t0715_animation: android的动画练习 

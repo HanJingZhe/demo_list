@@ -1,5 +1,6 @@
 package com.example.tanimation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -8,6 +9,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
@@ -20,9 +22,12 @@ import butterknife.OnClick;
 /**
  * @author peng_wang
  * @des 此项目用于操作动画效果 view动画
+ * 补间动画
  */
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.tv_0)
+    TextView tv0;
     @BindView(R.id.tv_1)
     TextView tv1;
     @BindView(R.id.tv_2)
@@ -108,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.tv_1, R.id.tv_2, R.id.tv_3, R.id.tv_4, R.id.tv_5, R.id.tv_6})
+    @OnClick({R.id.tv_1, R.id.tv_2, R.id.tv_3, R.id.tv_4, R.id.tv_5, R.id.tv_6, R.id.tv_0})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_1:
@@ -129,7 +134,43 @@ public class MainActivity extends AppCompatActivity {
             case R.id.tv_6:
                 createAnim();
                 break;
+            case R.id.tv_0:
+                toAttr();//查看属性动画
+                break;
         }
+    }
+
+    /**
+     * 去往属性动画
+     */
+    private void toAttr() {
+        AnimationSet set = new AnimationSet(true);
+        Animation rotate = new RotateAnimation(0f, 1080f, RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+        Animation alpha = new AlphaAnimation(1.0f, 0.0f);
+        Animation translate = new TranslateAnimation(TranslateAnimation.RELATIVE_TO_PARENT, 0, TranslateAnimation.RELATIVE_TO_PARENT, 0,
+                TranslateAnimation.RELATIVE_TO_PARENT, 0.75f, TranslateAnimation.RELATIVE_TO_PARENT, 0.75f);
+        set.addAnimation(rotate);
+        set.addAnimation(alpha);
+        set.addAnimation(translate);
+        set.setDuration(1500);
+        set.setInterpolator(new DecelerateInterpolator()); //设置插值器 又快变慢
+        tv0.startAnimation(set);
+        set.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                startActivity(new Intent(MainActivity.this, TestSurfaceActivity.class));
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
 
@@ -137,11 +178,12 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         float scale = metrics.density;
 
-        /*Animation animation = new TranslateAnimation(0, 200 * scale, 0, 200 * scale);
+        Animation animation = new TranslateAnimation(0, 200 * scale, 0, 200 * scale);
         animation.setDuration(1500);
         animation.setRepeatMode(Animation.REVERSE);
+        animation.setStartOffset(1000); //延时开始执行
         animation.setRepeatCount(Integer.MAX_VALUE);
-        tv6.startAnimation(animation);*/
+        tv6.startAnimation(animation);
 
 
         //动画集
@@ -149,18 +191,19 @@ public class MainActivity extends AppCompatActivity {
         set.setRepeatMode(Animation.REVERSE);
         set.setRepeatCount(2);
         set.setDuration(3000);
+        set.setStartOffset(1000); //延时执行
         //旋转  prvoXType 相对的参照物的类型 自身或父容器
-        Animation rotate = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        Animation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 
         //平移
-        Animation translate = new TranslateAnimation(TranslateAnimation.RELATIVE_TO_SELF,0f,TranslateAnimation.RELATIVE_TO_SELF,0,
-                                                     TranslateAnimation.RELATIVE_TO_SELF,0f,TranslateAnimation.RELATIVE_TO_SELF,1);
+        Animation translate = new TranslateAnimation(TranslateAnimation.RELATIVE_TO_SELF, 0f, TranslateAnimation.RELATIVE_TO_SELF, 0,
+                TranslateAnimation.RELATIVE_TO_SELF, 0f, TranslateAnimation.RELATIVE_TO_SELF, 1);
 
         //渐变
-        Animation alpha = new AlphaAnimation(1.0f,0.2f);
+        Animation alpha = new AlphaAnimation(1.0f, 0.2f);
 
         //缩放
-        Animation scaleAnim = new ScaleAnimation(1.0f,2.0f,1.0f,2.0f,ScaleAnimation.RELATIVE_TO_SELF,0.5f,ScaleAnimation.RELATIVE_TO_SELF,0.5f);
+        Animation scaleAnim = new ScaleAnimation(1.0f, 2.0f, 1.0f, 2.0f, ScaleAnimation.RELATIVE_TO_SELF, 0.5f, ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
 
         set.addAnimation(rotate);
         set.addAnimation(translate);

@@ -2,99 +2,91 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".AttrActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:minHeight="640dp"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        android:orientation="vertical">
+
 
         <TextView
-            android:id="@+id/tv_0"
+            android:id="@+id/attr_tv_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:background="#ff2c6d"
             android:padding="10dp"
-            android:text="查看属性动画"
+            android:text="渐变"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_1"
+            android:id="@+id/attr_tv_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:background="#ff2c6d"
             android:padding="10dp"
-            android:text="渐变动画"
-            android:textColor="#000"
+            android:text="缩放"
+            android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_2"
+            android:id="@+id/attr_tv_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:background="#ff2c6d"
             android:padding="10dp"
-            android:text="位移动画"
-            android:textColor="#000"
+            android:text="位移"
+            android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_3"
+            android:id="@+id/attr_tv_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:background="#ff2c6d"
             android:padding="10dp"
-            android:text="缩放动画"
-            android:textColor="#000"
+            android:text="旋转"
+            android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_4"
+            android:id="@+id/attr_tv_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:background="#ff2c6d"
             android:padding="10dp"
-            android:text="旋转动画"
-            android:textColor="#000"
+            android:text="set"
+            android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_5"
+            android:id="@+id/attr_tv_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:background="#ff2c6d"
             android:padding="10dp"
-            android:text="set动画集"
-            android:textColor="#000"
+            android:text="系统的api"
+            android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#ff2c6d"
-            android:padding="10dp"
-            android:text="java代码设置动画"
-            android:textColor="#000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+
 
     </LinearLayout>
+
 </ScrollView>
