@@ -10,14 +10,17 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LayoutAnimationController;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import it.sephiroth.android.library.easing.Linear;
 
 /**
  * @author peng_wang
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tv5;
     @BindView(R.id.tv_6)
     TextView tv6;
+    @BindView(R.id.main_ll)
+    LinearLayout mainLl;
 
     private Animation alphaAnim;
     private Animation setAnim;
@@ -63,6 +68,22 @@ public class MainActivity extends AppCompatActivity {
         scaleT();
         //rotate动画
         rotateT();
+
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.layout_anim);
+        LayoutAnimationController controller = new LayoutAnimationController(animation);
+        controller.setDelay(0.2f);
+        controller.setOrder(LayoutAnimationController.ORDER_REVERSE);
+        mainLl.setLayoutAnimation(controller);
+
+        /**
+         * LayoutAnimation 适用于所有的 ViewGroup ，
+         * 自然也包含 ListView、RecyclerView 等控件。
+         * 上面说过 LayoutAnimation 提供的是进场动画 效果，
+         * 所以只在 ViewGroup 第一次加载子 View 时显示一次，
+         * 所以列表控件的 item 加载动画我们一般不使用它，
+         * 我们会使用 列表 专门的 Item 加载动画，
+         * 比如 recyclerView.setItemAnimator() 等方式。
+         */
     }
 
 

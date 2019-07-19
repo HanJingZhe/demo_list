@@ -26,7 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestSurfaceActivity" />
-        <activity android:name=".ButtonActivity"></activity>
+        <activity android:name=".ButtonActivity" />
+        <activity android:name=".ExActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layoutAnimation android:delay="0.2" android:animation="@anim/layout_anim" android:animationOrder="random"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+</layoutAnimation>
+
+<!--有三个值 animationOrder：：normal 表示按正常顺序出现。random 表示乱序出现。reverse 表示反序出现。-->
