@@ -27,10 +27,10 @@ public class FlowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flow);
         flowRv = findViewById(R.id.flow_rv);
-        flowRv.setLayoutManager(new LinearLayoutManager(this));
-        //flowRv.setLayoutManager(new FlowLayoutManager()); //流布局
+        //flowRv.setLayoutManager(new LinearLayoutManager(this));
+        flowRv.setLayoutManager(new FlowLayoutManager()); //流布局
         //flowRv.setLayoutManager(new FlowLayoutManager2());//流布局
-        flowRv.setLayoutManager(new OverLayCardLayoutManager()); //卡片 无效
+        //flowRv.setLayoutManager(new OverLayCardLayoutManager()); //卡片 无效
         flowRv.setAdapter(new FlowAdapter(initData()));
 
 
