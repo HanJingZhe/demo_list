@@ -1,6 +1,5 @@
 package peng.qtgm.tum;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ninetripods.aopermission.permissionlib.annotation.NeedPermission;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
@@ -58,11 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick({R.id.main_tv1, R.id.main_tv2,R.id.main_tv3,R.id.main_tv4})
     public void onClick(View v) {
-        if(umShareAPI.isInstall(this,SHARE_MEDIA.SINA)){
-            Log.e("王鹏","已安装");
-        }else{
-            Log.e("王鹏","未安装");
-        }
         switch (v.getId()) {
             case R.id.main_tv1:
                 new ShareAction(MainActivity.this).withText("hello").setDisplayList(SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)

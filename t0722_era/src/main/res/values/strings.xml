@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">t0722_era</string>
+
+    <string name="main_tv_test">测试数据测试数据测试数据测试数据测试数据测试数据</string>
+
+    <string name="behavior_image">com.qtgm.peng.era.utils.ImageBehavior</string>
+
+
+    <string name="behavior_main_header">com.qtgm.peng.era.utils.MainHeaderBehavior</string>
+    <string name="behavior_xiami_comment">com.qtgm.peng.era.utils.XiamiCommentBehavior</string>
+    <string name="behavior_xiami_title">com.qtgm.peng.era.utils.XiamiTitleBehavior</string>
+
+
+</resources>
