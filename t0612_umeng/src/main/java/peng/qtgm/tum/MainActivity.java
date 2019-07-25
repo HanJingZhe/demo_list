@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umeng.message.PushAgent;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         umShareAPI = UMShareAPI.get(this);
-
+        PushAgent.getInstance(this).onAppStart();
     }
 
     @Override
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     /**
      * 登录回调
      */
@@ -132,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "取消了", Toast.LENGTH_LONG).show();
         }
     };
+
     /**
      * 分享回调
      */
