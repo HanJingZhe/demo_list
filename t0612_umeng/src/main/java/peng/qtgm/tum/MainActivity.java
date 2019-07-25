@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
@@ -50,6 +51,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         UMShareAPI.get(this).release();
@@ -72,10 +85,12 @@ public class MainActivity extends AppCompatActivity {
                 new ShareAction(MainActivity.this).setPlatform(SHARE_MEDIA.WEIXIN).withText("hello").withMedia(image).setCallback(shareListener).share();
                 break;
             case R.id.main_tv3:
+                MobclickAgent.onEvent(this,"test_tv_3");
                 umShareAPI.getPlatformInfo(MainActivity.this, SHARE_MEDIA.WEIXIN, authListener);
                 break;
             case R.id.main_tv4:
                 umShareAPI.getPlatformInfo(MainActivity.this, SHARE_MEDIA.QQ, authListener);
+                MobclickAgent.onEvent(this,"test_tv_4");
                 break;
         }
 
