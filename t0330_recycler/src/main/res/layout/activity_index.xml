@@ -11,6 +11,17 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/index_tv_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="..."
+            android:textColor="#000"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/index_tv_srl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,24 +32,63 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/index_tv_flow"
+            android:id="@+id/index_tv_smart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Recycler + BaseQuickAdapter"
+            android:text="测试智能srl效果"
             android:textColor="#000"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/index_tv_dot"
+            android:id="@+id/index_tv_srl_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:padding="10dp"
-            android:text="..."
+            android:text="查看各种header footer"
             android:textColor="#000"
-            android:textSize="30dp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/index_tv_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="FlowActivity流布局"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/index_tv_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="分组布局"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/index_tv_pull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="拖拽"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/index_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="标题吸附"
+            android:textColor="#000"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
 

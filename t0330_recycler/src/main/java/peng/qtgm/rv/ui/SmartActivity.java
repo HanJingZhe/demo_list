@@ -6,11 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.ArrayList;
@@ -26,55 +25,39 @@ import peng.qtgm.rv.R;
 import peng.qtgm.rv.adapter.SrlAdapter;
 
 /**
- * 关于刷新的主页
+ * test 智能判定的刷新边界
  */
-@SuppressLint("CheckResult")
-public class SrlActivity extends AppCompatActivity {
+public class SmartActivity extends AppCompatActivity {
 
-    @BindView(R.id.srl_rv)
-    RecyclerView srlRv;
-    @BindView(R.id.srl_srl)
-    SmartRefreshLayout srlSrl;
+    @BindView(R.id.smart_tv_ad)
+    TextView smartTvAd;
+    @BindView(R.id.smart_rv)
+    RecyclerView smartRv;
+    @BindView(R.id.smart_srl)
+    SmartRefreshLayout smartSrl;
 
     private int page = 0;
     private int page_size = 20;
 
     private SrlAdapter srlAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_srl);
+        setContentView(R.layout.activity_smart);
         ButterKnife.bind(this);
+
         initRv();
     }
 
-    /*
-     * 初始化列表
-     */
     private void initRv() {
-        srlRv.setLayoutManager(new LinearLayoutManager(this));
+        smartRv.setLayoutManager(new LinearLayoutManager(this));
         srlAdapter = new SrlAdapter(null);
-        srlRv.setAdapter(srlAdapter);
+        smartRv.setAdapter(srlAdapter);
         threadData();
 
-
-        //设置 Header 为 贝塞尔雷达 样式
-        srlSrl.setRefreshHeader(new ClassicsHeader(this));
-        //设置 Footer 为 球脉冲 样式
-        srlSrl.setRefreshFooter(new ClassicsFooter(this));
-
-        //其他属性
-        srlSrl.setEnableAutoLoadMore(true); //滚动到底部自动触发加载更多
-        srlSrl.setEnableScrollContentWhenLoaded(true); //是否在加载完成时滚动列表显示新的内容
-        srlSrl.setEnableLoadMoreWhenContentNotFull(true); //内容不足一页 是否开启加载更多
-        srlSrl.setEnableFooterFollowWhenLoadFinished(false); //全部加载完成后 footer 是否保留
-        srlSrl.setEnableOverScrollDrag(true);//是否启用越界拖动（仿苹果效果）1.0.4
-
-
         //刷新和加载的监听
-        srlSrl.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+        smartSrl.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 page++;
@@ -83,17 +66,17 @@ public class SrlActivity extends AppCompatActivity {
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                srlSrl.resetNoMoreData();
+                smartSrl.resetNoMoreData();
                 page = 0;
                 threadData();
             }
         });
     }
 
-
     /*
      * 模拟数据
      */
+    @SuppressLint("CheckResult")
     private void threadData() {
         Observable
                 .timer(500, TimeUnit.MILLISECONDS)
@@ -114,16 +97,15 @@ public class SrlActivity extends AppCompatActivity {
     private void loadData(List<String> list) {
         if (page == 0) {
             srlAdapter.setNewData(list);
-            srlSrl.finishRefresh();
+            smartSrl.finishRefresh();
         } else {
             if (page > 2) {
-                srlSrl.setNoMoreData(true);
+                smartSrl.setNoMoreData(true);
                 return;
             }
             srlAdapter.addData(list);
-            srlSrl.finishLoadMore();
+            smartSrl.finishLoadMore();
         }
     }
-
 
 }

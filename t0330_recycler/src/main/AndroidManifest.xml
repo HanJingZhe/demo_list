@@ -35,7 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SrlActivity"></activity>
+        <activity android:name=".ui.SrlActivity" />
+        <activity android:name=".ui.SmartActivity" />
+        <activity android:name=".ui.SrlStyleActivity"></activity>
     </application>
 
 </manifest>

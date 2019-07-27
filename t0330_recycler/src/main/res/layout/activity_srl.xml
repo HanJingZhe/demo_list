@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/srl_srl"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        app:srlHeaderTranslationViewId="@id/srl_tv"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:srlFixedHeaderViewId="@id/srl_tv_header">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/srl_rv"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/srl_tv_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="SMART_HEADER"
+                android:textColor="#000" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/srl_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/adapter_srl_layout" />
+
+        </LinearLayout>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    <TextView
-        android:id="@+id/srl_tv"
-        android:layout_width="wrap_content"
-        android:text="888888888888"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_height="wrap_content" />
 
-</LinearLayout>
+</RelativeLayout>
