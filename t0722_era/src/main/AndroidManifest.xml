@@ -23,8 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CustomActivity"/>
-        <activity android:name=".TestActivity4"/>
+        <activity android:name=".CustomActivity" />
+        <activity android:name=".TestActivity4" />
+        <activity android:name=".ToolActivity" />
+        <activity android:name=".SinaActivity"></activity>
     </application>
 
 </manifest>

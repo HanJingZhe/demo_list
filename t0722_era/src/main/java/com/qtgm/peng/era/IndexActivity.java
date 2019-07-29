@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +39,9 @@ public class IndexActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         StatusBarUtil.setTranslucentForCoordinatorLayout(this, 0);
 
-        toolbar.setTitle("只包含toolBar  的布局");
+        //toolbar.setTitle("只包含toolBar  的布局");
+        toolbar.setOnClickListener(v -> startActivity(new Intent(this,ToolActivity.class)));
+
         myAdapter = new MyAdapter(initData());
         indexRv.setLayoutManager(new LinearLayoutManager(this));
         indexRv.setAdapter(myAdapter);
