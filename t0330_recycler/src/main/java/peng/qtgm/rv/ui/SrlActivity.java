@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -59,19 +60,24 @@ public class SrlActivity extends AppCompatActivity {
         srlRv.setAdapter(srlAdapter);
         threadData();
 
-
         //设置 Header 为 贝塞尔雷达 样式
-        srlSrl.setRefreshHeader(new ClassicsHeader(this));
+        ClassicsHeader header = new ClassicsHeader(this);
+        header.setArrowResource(R.mipmap.naruto0);
+        srlSrl.setRefreshHeader(header);
+
         //设置 Footer 为 球脉冲 样式
-        srlSrl.setRefreshFooter(new ClassicsFooter(this));
+        ClassicsFooter footer = new ClassicsFooter(this);
+        footer.setFinishDuration(0);
+        srlSrl.setRefreshFooter(footer);
+
 
         //其他属性
         srlSrl.setEnableAutoLoadMore(true); //滚动到底部自动触发加载更多
         srlSrl.setEnableScrollContentWhenLoaded(true); //是否在加载完成时滚动列表显示新的内容
         srlSrl.setEnableLoadMoreWhenContentNotFull(true); //内容不足一页 是否开启加载更多
-        srlSrl.setEnableFooterFollowWhenLoadFinished(false); //全部加载完成后 footer 是否保留
+        //srlSrl.setEnableFooterFollowWhenLoadFinished(false); //全部加载完成后 footer 是否保留  废弃
+        srlSrl.setEnableFooterFollowWhenNoMoreData(true); //全部加载完成后 footer 是否保留 新的API
         srlSrl.setEnableOverScrollDrag(true);//是否启用越界拖动（仿苹果效果）1.0.4
-
 
         //刷新和加载的监听
         srlSrl.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
@@ -96,7 +102,7 @@ public class SrlActivity extends AppCompatActivity {
      */
     private void threadData() {
         Observable
-                .timer(500, TimeUnit.MILLISECONDS)
+                .timer(50, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io()) //订阅在子线程
                 .observeOn(AndroidSchedulers.mainThread())//回调在主线程
                 .subscribe(aLong -> {
@@ -116,13 +122,11 @@ public class SrlActivity extends AppCompatActivity {
             srlAdapter.setNewData(list);
             srlSrl.finishRefresh();
         } else {
-            if (page > 2) {
-                srlSrl.setNoMoreData(true);
-                return;
-            }
             srlAdapter.addData(list);
             srlSrl.finishLoadMore();
         }
+
+        srlSrl.setNoMoreData(list == null || list.size() < page_size || page > 3);
     }
 
 

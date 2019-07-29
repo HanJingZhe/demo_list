@@ -9,6 +9,7 @@
         android:id="@+id/srl_srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:srlFixedFooterViewId="@id/srl_tv_footer"
         app:srlFixedHeaderViewId="@id/srl_tv_header">
 
         <LinearLayout
@@ -30,6 +31,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/adapter_srl_layout" />
+
+            <TextView
+                android:id="@+id/srl_tv_footer"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:text="SRART_FOOTER" />
 
         </LinearLayout>
 
