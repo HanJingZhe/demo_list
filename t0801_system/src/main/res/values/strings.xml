@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">t0801_system</string>
+    <string name="main_string__current">获取当前可用内存</string>
+    <string name="main_string_cup_current">获取当前CUP频率</string>
+</resources>
