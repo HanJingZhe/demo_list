@@ -125,7 +125,6 @@ public class CPU2 {
                     }
                 }
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } finally {
                 if (bufferedReader != null) {
@@ -199,7 +198,6 @@ public class CPU2 {
                     }
                 }
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } finally {
                 if (bufferedReader != null) {

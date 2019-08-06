@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-aspectjx'//permission
-apply plugin: 'walle'
 
 android {
     compileSdkVersion 28
 
+
     defaultConfig {
-        applicationId "peng.qtgm.rx"
-        minSdkVersion 21
+        applicationId "com.qtgm.peng.t0805_save"
+        minSdkVersion 14
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -16,47 +15,18 @@ android {
 
     }
 
-    signingConfigs {
-        debug {
-            storeFile file("t0505_rx.jks")
-            storePassword "123321"
-            keyAlias "testrx"
-            keyPassword "123321"
-            v2SigningEnabled true
-        }
-        release {
-            storeFile file("t0505_rx.jks")
-            storePassword "123321"
-            keyAlias "testrx"
-            keyPassword "123321"
-            v2SigningEnabled true
-        }
-    }
-
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release //签名
-
-        }
-        debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    //noinspection GradleCompatible
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -82,14 +52,5 @@ dependencies {
     implementation 'com.zhihu.android:matisse:0.5.2-beta4'
     implementation 'com.xhb:xbanner:1.5.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-16'
-    implementation 'com.android.support:cardview-v7:28.0.0'
-}
 
-walle {
-    // 指定渠道包的输出路径
-    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
-    // 定制渠道包的APK的文件名称
-    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
-    // 渠道配置文件
-    channelFile = new File("${project.getProjectDir()}/channel")
 }
