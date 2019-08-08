@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_tv1:
-                startActivity(new Intent(this, PersonBookActivity.class));
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.main_tv2:
                 break;

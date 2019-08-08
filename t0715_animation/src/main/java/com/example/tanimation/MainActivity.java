@@ -20,7 +20,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import it.sephiroth.android.library.easing.Linear;
 
 /**
  * @author peng_wang

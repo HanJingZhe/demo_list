@@ -12,7 +12,7 @@ import com.qtgm.peng.t0805_save.bean.UserBean;
  */
 public class UserService {
 
-    private final SQlPersonHelp dbHelper;
+    private SQlPersonHelp dbHelper;
 
     public UserService(Context context) {
         dbHelper = new SQlPersonHelp(context);
@@ -20,7 +20,7 @@ public class UserService {
 
     public boolean login(String uname, String password) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String sql = "select * from user where uname=? and password=?";
+        String sql = "select * from user where username=? and password=?";
         Cursor cursor = db.rawQuery(sql, new String[]{uname, password});
         if (cursor.moveToNext()) {
             cursor.close();
