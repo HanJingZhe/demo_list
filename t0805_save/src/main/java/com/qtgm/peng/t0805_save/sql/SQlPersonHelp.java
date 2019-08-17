@@ -22,8 +22,8 @@ public class SQlPersonHelp extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table user(" +
                 "id integer primary key autoincrement," +
-                "uname varchar(20)," +
-                "passworld varchar(20)," +
+                "username varchar(20)," +
+                "password varchar(20)," +
                 "age integer," +
                 "sex varchar(2)" +
                 ")";

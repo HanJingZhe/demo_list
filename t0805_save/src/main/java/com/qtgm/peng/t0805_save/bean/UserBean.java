@@ -12,6 +12,13 @@ public class UserBean {
     private int age;
     private String sex;
 
+    public UserBean(String username, String password, int age, String sex) {
+        this.username = username;
+        this.password = password;
+        this.age = age;
+        this.sex = sex;
+    }
+
     @Override
     public String toString() {
         return "UserBean{" +

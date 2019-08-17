@@ -14,6 +14,7 @@ import com.qtgm.peng.t0805_save.ui.fragment.RegistFragment;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,4 +42,9 @@ public class LoginActivity extends AppCompatActivity {
         viewPage.setAdapter(myTabAdapter);
 
     }
+
+    public void move(){
+        tabLayout.getTabAt(0).select();
+    }
+
 }

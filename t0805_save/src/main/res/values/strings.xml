@@ -6,4 +6,11 @@
 
 
     <string name="assets_triangle">&#xe665;</string>
+    <string name="sign_on">SIGN ON</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+    <string name="regist_in">REGIST IN</string>
+    <string name="login">LOGIN</string>
+    <string name="age">age</string>
+    <string name="sex">sex</string>
 </resources>

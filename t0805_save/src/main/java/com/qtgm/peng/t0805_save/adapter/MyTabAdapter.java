@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * @author peng_wang
  * @date 2019/8/7
+ * @des tabLayout + Fragment
  */
 public class MyTabAdapter extends FragmentStatePagerAdapter {
 
