@@ -12,6 +12,9 @@ public class UserBean {
     private int age;
     private String sex;
 
+    public UserBean() {
+    }
+
     public UserBean(String username, String password, int age, String sex) {
         this.username = username;
         this.password = password;

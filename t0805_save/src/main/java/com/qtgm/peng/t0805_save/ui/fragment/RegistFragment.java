@@ -15,6 +15,8 @@ import com.qtgm.peng.t0805_save.bean.UserBean;
 import com.qtgm.peng.t0805_save.sql.UserService;
 import com.qtgm.peng.t0805_save.ui.LoginActivity;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -54,15 +56,14 @@ public class RegistFragment extends Fragment {
 
     @OnClick(R.id.register_btn)
     public void onClick() {
-        regist();
+        EventBus.getDefault().post(new UserBean());
+        //regist();
     }
 
     private void regist() {
         UserService userService = new UserService(getActivity());
         UserBean userBean = new UserBean(edit2String(etUsername), edit2String(etPassword), Integer.parseInt(edit2String(etAge)), edit2String(etSex));
         userService.register(userBean);
-        LoginActivity activity = (LoginActivity) getActivity();
-        activity.move();
     }
 
     private String edit2String(EditText et) {

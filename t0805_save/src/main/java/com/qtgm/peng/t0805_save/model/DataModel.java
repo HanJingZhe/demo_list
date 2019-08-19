@@ -1,4 +1,4 @@
-package com.qtgm.peng.t0805_save;
+package com.qtgm.peng.t0805_save.model;
 
 import android.annotation.SuppressLint;
 
