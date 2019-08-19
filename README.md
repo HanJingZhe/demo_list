@@ -19,7 +19,7 @@ t0805_save: 本地化存储
 
 项目依赖
 
-    //添加依赖
+     //添加依赖
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -38,3 +38,7 @@ t0805_save: 本地化存储
     implementation 'com.zhihu.android:matisse:0.5.2-beta4'
     implementation 'com.xhb:xbanner:1.5.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-16'
+    implementation 'com.android.support:design:28.0.0'
+
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
