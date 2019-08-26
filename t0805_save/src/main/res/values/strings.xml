@@ -13,4 +13,5 @@
     <string name="login">LOGIN</string>
     <string name="age">age</string>
     <string name="sex">sex</string>
+    <string name="to_regist">没有账号?前去注册</string>
 </resources>

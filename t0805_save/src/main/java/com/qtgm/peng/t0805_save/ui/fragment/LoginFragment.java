@@ -8,10 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qtgm.peng.t0805_save.R;
+import com.qtgm.peng.t0805_save.bean.EventBase;
 import com.qtgm.peng.t0805_save.sql.UserService;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +31,8 @@ public class LoginFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.login_btn_sign)
     Button btnSign;
+    @BindView(R.id.login_tv_to_reg)
+    TextView tvToReg;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,16 +48,24 @@ public class LoginFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.login_btn_sign)
-    public void onClick() {
-        UserService userService = new UserService(getActivity());
-        boolean login = userService.login(etUsername.getText().toString(), etPassword.getText().toString());
-        if (login) {
-            Toast.makeText(getActivity(), "登录成功", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast toast = Toast.makeText(getActivity(), "登录失败", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER,0,0);
-            toast.show();
+    @OnClick({R.id.login_btn_sign,R.id.login_tv_to_reg})
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.login_btn_sign:
+                UserService userService = new UserService(getActivity());
+                boolean login = userService.login(etUsername.getText().toString(), etPassword.getText().toString());
+                if (login) {
+                    Toast.makeText(getActivity(), "登录成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast toast = Toast.makeText(getActivity(), "登录失败", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+                break;
+            case R.id.login_tv_to_reg:
+                EventBase eventBase = new EventBase(100, null);
+                EventBus.getDefault().post(eventBase);
+                break;
         }
     }
 

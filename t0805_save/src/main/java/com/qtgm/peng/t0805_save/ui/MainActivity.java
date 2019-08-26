@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.main_tv2:
+                startActivity(new Intent(this,ShowActivity.class));
                 break;
         }
     }
