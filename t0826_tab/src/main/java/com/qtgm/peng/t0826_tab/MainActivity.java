@@ -17,8 +17,11 @@ public class MainActivity extends AppCompatActivity {
     TabLayout mainTabLayout;
     @BindView(R.id.main_view_pager)
     ViewPager mainViewPager;
-    private List<String> listTitle = Arrays.asList("鸣人", "卡卡西");
-    private List<Fragment> listFragment = Arrays.asList(new MyFragment("鸣人"), new MyFragment("卡卡西"));
+    private List<String> listTitle = Arrays.asList("鸣人", "卡卡西", "鸣人", "卡卡西", "鸣人", "卡卡西", "鸣人", "卡卡西");
+    private List<Fragment> listFragment = Arrays.asList(new MyFragment("鸣人"), new MyFragment("卡卡西"),
+            new MyFragment("鸣人"), new MyFragment("卡卡西"), new MyFragment("鸣人"), new MyFragment("卡卡西"),
+            new MyFragment("鸣人"), new MyFragment("卡卡西"));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
